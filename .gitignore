@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Local database
+*.db
+
+# Compiled C++ binary
+cpp/vulnerable
+
+# Secrets
+.env
+.env.local
+*.key
+*.pem
+credentials.json
+
+# System files
+.DS_Store
+Thumbs.db

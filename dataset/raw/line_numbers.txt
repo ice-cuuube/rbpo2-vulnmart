@@ -1,0 +1,32 @@
+=== Python ===
+SQL Injection:
+104:    query = f"""
+Stored XSS:
+151:    # УЯЗВИМОСТЬ: |safe отключает обычное экранирование HTML
+160:                <p>{{ review["text"]|safe }}</p>
+IDOR:
+172:@app.route("/orders/<int:order_id>")
+Hard-coded credentials:
+9:ADMIN_PASSWORD = "admin123"
+196:    if password == ADMIN_PASSWORD:
+
+=== C++ ===
+Buffer Overflow:
+13:    strcpy(buffer, input);
+Format String:
+23:    printf(input);
+Command Injection:
+38:    system(command);
+
+=== JavaScript ===
+SQL Injection:
+33:            `SELECT * FROM users WHERE username = '${username}'`;
+XSS:
+68:        res.send(`<h1>Hello, ${name}!</h1>`);
+85:            res.send(stdout);
+92:        res.send(`
+Command Injection:
+3:const { exec } = require("child_process");
+36:            const result = db.exec(query);
+78:        // передаётся непосредственно в exec()
+79:        exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {

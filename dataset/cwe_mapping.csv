@@ -1,0 +1,8 @@
+cwe_id,cwe_name,owasp_category,typical_impact
+CWE-79,Cross-site Scripting,A03 Injection,Выполнение нежелательного HTML/скриптового содержимого
+CWE-89,SQL Injection,A03 Injection,Изменение SQL-запросов и возможная утечка данных
+CWE-863,Incorrect Authorization,A01 Broken Access Control,Доступ к объектам без необходимых прав
+CWE-798,Hard-coded Credentials,A07 Authentication Failures,Компрометация учётных данных
+CWE-120,Buffer Overflow,A06,Выход за границы буфера
+CWE-134,Format String,A03 Injection,Небезопасное управление строкой формата
+CWE-78,OS Command Injection,A03 Injection,Выполнение команд через пользовательский ввод

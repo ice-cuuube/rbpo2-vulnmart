@@ -1,0 +1,55 @@
+Run started:2026-10-04 09:20:14.952925+00:00
+
+Test results:
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: 'admin123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html
+   Location: python/app.py:9:17
+8	# CWE-798: Hard-coded Credentials
+9	ADMIN_PASSWORD = "admin123"
+10	
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: python/app.py:104:12
+103	    # УЯЗВИМОСТЬ: пользовательский ввод напрямую попадает в SQL-запрос
+104	    query = f"""
+105	        SELECT id, username
+106	        FROM users
+107	        WHERE username = '{username}'
+108	        AND password = '{password}'
+109	    """
+110	
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: python/app.py:210:17
+209	    print("VulnMart-Lab запущен на http://127.0.0.1:5055")
+210	    app.run(host="0.0.0.0", port=5055, debug=False)
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 153
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 2
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 1
+		Medium: 2
+		High: 0
+Files skipped (0):

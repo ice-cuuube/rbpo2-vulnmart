@@ -1,0 +1,14 @@
+cpp/vulnerable.cpp:1:2: information: Include file: <iostream> not found. Please note: Standard library headers do not need to be provided to get proper results. [missingIncludeSystem]
+#include <iostream>
+ ^
+cpp/vulnerable.cpp:2:2: information: Include file: <cstring> not found. Please note: Standard library headers do not need to be provided to get proper results. [missingIncludeSystem]
+#include <cstring>
+ ^
+cpp/vulnerable.cpp:3:2: information: Include file: <cstdio> not found. Please note: Standard library headers do not need to be provided to get proper results. [missingIncludeSystem]
+#include <cstdio>
+ ^
+cpp/vulnerable.cpp:4:2: information: Include file: <cstdlib> not found. Please note: Standard library headers do not need to be provided to get proper results. [missingIncludeSystem]
+#include <cstdlib>
+ ^
+nofile:0:0: information: Active checkers: 186/189 (use --checkers-report=<filename> to see details) [checkersReport]
+

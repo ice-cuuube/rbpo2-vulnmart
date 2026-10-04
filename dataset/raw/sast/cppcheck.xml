@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="2.23 dev"/>
+    <errors>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please note: Standard library headers do not need to be provided to get proper results." verbose="Include file: &lt;iostream&gt; not found. Please note: Standard library headers do not need to be provided to get proper results.">
+            <location file="cpp/vulnerable.cpp" line="1" column="2"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;cstring&gt; not found. Please note: Standard library headers do not need to be provided to get proper results." verbose="Include file: &lt;cstring&gt; not found. Please note: Standard library headers do not need to be provided to get proper results.">
+            <location file="cpp/vulnerable.cpp" line="2" column="2"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;cstdio&gt; not found. Please note: Standard library headers do not need to be provided to get proper results." verbose="Include file: &lt;cstdio&gt; not found. Please note: Standard library headers do not need to be provided to get proper results.">
+            <location file="cpp/vulnerable.cpp" line="3" column="2"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;cstdlib&gt; not found. Please note: Standard library headers do not need to be provided to get proper results." verbose="Include file: &lt;cstdlib&gt; not found. Please note: Standard library headers do not need to be provided to get proper results.">
+            <location file="cpp/vulnerable.cpp" line="4" column="2"/>
+        </error>
+        <error id="checkersReport" severity="information" msg="Active checkers: 186/189 (use --checkers-report=&lt;filename&gt; to see details)" verbose="Active checkers: 186/189 (use --checkers-report=&lt;filename&gt; to see details)"/>
+    </errors>
+</results>

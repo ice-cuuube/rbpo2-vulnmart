@@ -1,0 +1,11 @@
+vuln_id,language,file,line,severity,cwe_id,cwe_name,owasp,cve_example,cvss,description
+1,Python,python/app.py,104,Critical,CWE-89,SQL Injection,A03,CVE-2020-37243,8.8,Пользовательский ввод напрямую включается в SQL-запрос
+2,Python,python/app.py,160,High,CWE-79,Stored XSS,A03,CVE-2005-3309,4.3,Сохранённое пользовательское содержимое выводится через фильтр safe без HTML-экранирования
+3,Python,python/app.py,172,High,CWE-863,Incorrect Authorization,A01,CVE-2021-39155,7.5,Доступ к заказу выполняется без проверки прав владельца (IDOR)
+4,Python,python/app.py,9,High,CWE-798,Hard-coded Credentials,A07,—,N/A,Пароль административной панели хранится прямо в исходном коде
+5,C++,cpp/vulnerable.cpp,13,Critical,CWE-120,Buffer Overflow,A06,CVE-2024-41660,9.8,Используется strcpy без ограничения размера входных данных
+6,C++,cpp/vulnerable.cpp,23,High,CWE-134,Format String,A03,CVE-2024-39529,8.7,Пользовательская строка используется напрямую как формат printf
+7,C++,cpp/vulnerable.cpp,38,Critical,CWE-78,OS Command Injection,A03,CVE-2026-102874,5.5,Пользовательский ввод включается в системную команду system()
+8,JavaScript,javascript/vulnerable.js,33,Critical,CWE-89,SQL Injection,A03,CVE-2020-37243,8.8,Параметр username напрямую включается в SQL-запрос через шаблонную строку
+9,JavaScript,javascript/vulnerable.js,68,High,CWE-79,XSS,A03,CVE-2005-3309,4.3,Параметр name выводится в HTML без экранирования
+10,JavaScript,javascript/vulnerable.js,79,Critical,CWE-78,OS Command Injection,A03,CVE-2026-102874,5.5,Параметр host передаётся в child_process.exec() без валидации
