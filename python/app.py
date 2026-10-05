@@ -1,7 +1,30 @@
 from flask import Flask, request, jsonify, render_template_string
 import sqlite3
 
+from reliability_models import (
+    JelinskiMorandaModel,
+    SchumanModel,
+    NelsonCorcoranModel
+)
+
 app = Flask(__name__)
+
+RELIABILITY_CONFIG = {
+    "N0": 50,
+    "phi": 0.0001,
+
+    "I": 10000,
+    "E0": 50,
+    "Ks": 0.0001,
+
+    "nelson_P": [0.6, 0.4],
+    "nelson_n": [5, 2],
+    "nelson_N": [100, 50],
+
+    "corcoran_N0": 970,
+    "corcoran_Ni": [20, 10],
+    "corcoran_ai": [0.7, 0.3],
+}
 
 DB_PATH = "vulnmart.db"
 
@@ -203,6 +226,100 @@ def admin():
         "status": "denied"
     }), 403
 
+
+@app.route("/reliability", methods=["GET"])
+def reliability_report():
+    """Расчёт надёжности по трём моделям."""
+
+    t = request.args.get(
+        "t",
+        default=100,
+        type=float
+    )
+
+    i = request.args.get(
+        "i",
+        default=30,
+        type=int
+    )
+
+    Ec = request.args.get(
+        "Ec",
+        default=30,
+        type=int
+    )
+
+    jm = JelinskiMorandaModel(
+        N0=RELIABILITY_CONFIG["N0"],
+        phi=RELIABILITY_CONFIG["phi"]
+    )
+
+    sch = SchumanModel(
+        I=RELIABILITY_CONFIG["I"],
+        E0=RELIABILITY_CONFIG["E0"],
+        Ks=RELIABILITY_CONFIG["Ks"]
+    )
+
+    nc = NelsonCorcoranModel(
+        P=RELIABILITY_CONFIG["nelson_P"],
+        n=RELIABILITY_CONFIG["nelson_n"],
+        N=RELIABILITY_CONFIG["nelson_N"],
+        N0=RELIABILITY_CONFIG["corcoran_N0"],
+        Ni=RELIABILITY_CONFIG["corcoran_Ni"],
+        ai=RELIABILITY_CONFIG["corcoran_ai"]
+    )
+
+    result = {
+        "time_hours": t,
+        "corrected_errors": i,
+
+        "jelinski_moranda": {
+            "R": round(
+                jm.reliability(t, i),
+                4
+            ),
+            "MTTF": round(
+                jm.mttf(i),
+                2
+            ),
+            "lambda": round(
+                jm.failure_intensity(i),
+                6
+            )
+        },
+
+        "schuman": {
+            "R": round(
+                sch.reliability(t, Ec),
+                8
+            ),
+            "MTTF": round(
+                sch.mttf(Ec),
+                0
+            ),
+            "lambda": round(
+                sch.failure_intensity(Ec),
+                8
+            )
+        },
+
+        "nelson_corcoran": {
+            "R_nelson": round(
+                nc.reliability_nelson(),
+                4
+            ),
+            "R_corcoran": round(
+                nc.reliability_corcoran(),
+                4
+            ),
+            "R_simple": round(
+                nc.reliability_simple(),
+                4
+            )
+        }
+    }
+
+    return jsonify(result)
 
 if __name__ == "__main__":
     init_db()
